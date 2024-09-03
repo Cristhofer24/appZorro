@@ -1,0 +1,33 @@
+<div 
+nz-flex 
+[nzVertical]="true"
+[nzGap]="'middle'"  
+nzAlign="center" 
+nzJustify="flex-start"
+style="min-height: 400px;">
+    <h2 nz-typography>Botones</h2>
+    <div class="btn-wrapper" 
+    nz-flex 
+    [nzGap]="'middle'" 
+    nzWrap="wrap"
+    nzAlign="center"
+    nzJustify="center">
+    
+          <button 
+          *ngFor="let button of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+          style="width: 100px" 
+          nz-button nzType="primary">
+          Button {{button}}
+        </button>
+ 
+      </div>
+      <nz-divider nzText="Divide"></nz-divider>
+
+      <nz-steps>
+        <nz-step nzTitle="Login" nzStatus="finish" nzIcon="user"></nz-step>
+        <nz-step nzTitle="Verification" nzStatus="finish" nzIcon="solution"></nz-step>
+        <nz-step nzTitle="Pay" nzStatus="finish" nzIcon="loading"></nz-step>
+        <nz-step nzTitle="Done" nzStatus="finish" nzIcon="smile"></nz-step>
+
+      </nz-steps>
+  </div>
