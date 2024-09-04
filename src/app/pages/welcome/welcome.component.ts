@@ -9,7 +9,7 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [NzFlexModule , CommonModule,NzDividerModule,NzStepsModule],
+  imports: [NzFlexModule , CommonModule,NzDividerModule,NzStepsModule,],
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css'],
  

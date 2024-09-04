@@ -24,6 +24,7 @@ RouterLink],
 })
 export class LoginComponent {
 form:FormGroup;
+updateConfirmValidator: any;
 constructor(private fb:FormBuilder, private usersService: UsersService) {
   this.form=this.fb.group({
     email:["",[Validators.required]],
@@ -36,6 +37,7 @@ onClickLogin(): void {
   this.usersService.login(this.form.value)
     .then((response) => {
       console.log(response);
+      window.location.reload();
     })
     .catch(error => console.log(error));
 }

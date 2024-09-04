@@ -1,9 +1,5 @@
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
-    nzCollapsible
-    nzWidth="256px"
-    nzBreakpoint="md"
-    [(nzCollapsed)]="isCollapsed"
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null">
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
@@ -36,24 +32,42 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div class="app-header" nz-flex nzJustify="space-between"
-        nzAlign="center">
+      <div class="app-header" nz-flex nzJustify="space-between" nzAlign="center">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <span class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></span>
+          <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
 
         </span>
-        <nz-avatar 
-        style="background-color: #87d068 ; margin-right: 16px; cursor: pointer;" 
-        nz-tooltip nzTooltipTitle="NG-ZORRO User" 
-        nzIcon="user" 
-        routerLink="/login"
-        nzTooltipTitle="iniciar sesion" nzTooltipPlacement="bottom" nz-button nz-tooltip></nz-avatar>
+        <nz-avatar style="background-color: #87d068 ; margin-right: 16px; cursor: pointer;" nz-tooltip
+          nzTooltipTitle="NG-ZORRO User" nzIcon="user" routerLink="/login" *ngIf="!isLogged();else loggedIn"
+          nzTooltipTitle="iniciar sesion" nzTooltipPlacement="bottom" nz-button nz-tooltip></nz-avatar>
+
+        <ng-template #loggedIn>
+          
+            <button nz-type="text" nz-button nz-dropdown [nzDropdownMenu]="menu">
+              <nz-avatar nzIcon="user" 
+               [nzSrc]="registersService.currentRegister?.photoURL">
+              </nz-avatar>
+              <span  style="margin-left: 8px" nz-icon nzType="down"></span>
+            </button>
+
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>
+                  <a>Editar Perfil</a>
+                </li>
+                <li nz-menu-item>
+                  <a (click)="onClickLogOut()">Cerrar Sesion</a>
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+
+      
+
+        </ng-template>
+
       </div>
     </nz-header>
-   
+
 
     <nz-breadcrumb style="margin-top:16px; margin-left: 16px;">
       <nz-breadcrumb-item>
